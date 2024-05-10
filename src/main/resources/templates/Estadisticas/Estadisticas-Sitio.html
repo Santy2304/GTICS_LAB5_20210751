@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head th:replace="~{fragments/menu.html :: header( title = 'Estadísticas-Sitio')}">
+    </head>
+    <body>
+        <div class="container px-4 pb-5">
+            <nav th:replace="~{fragments/menu.html :: menu}"></nav>
+            <h1 class="pb-2 border-bottom">Lista de Intervensiones por Sitio</h1>
+
+            <table class="table">
+                <tr>
+                    <th>Cantidad</th>
+                    <th>Sitio</th>
+                </tr>
+                <tr th:each="ticket: ${listaTicketsSitios}">
+                    <td th:text="${ticket.cantidad}"></td>
+                    <td th:text="${ticket.site}"></td>
+                </tr>
+            </table>
+        </div>
+
+    </body>
+</html>

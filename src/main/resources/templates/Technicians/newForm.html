@@ -6,9 +6,8 @@
             <nav th:replace="~{fragments/menu.html :: menu}"></nav>
             <div class="row mb-4">
                 <div class="col-md-6 offset-md-3">
-                    <h2>Tecnico</h2>
-                    <!--<div th:if="${errorCompany != null}" th:text="${errorCompany}" class="alert alert-danger"
-                         role="alert"></div>-->
+                    <h2>Técnico</h2>
+
                     <hr/>
                     <form method="post" th:action="@{'/guardar'}" th:object="${technician}">
 

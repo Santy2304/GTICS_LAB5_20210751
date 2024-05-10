@@ -2,8 +2,8 @@ package com.example.gticslab5_20210751.Controllers;
 
 
 import com.example.gticslab5_20210751.Entity.Technician;
-import com.example.gticslab5_20210751.Repository.DeviceRepository;
 import com.example.gticslab5_20210751.Repository.TechnicianRepository;
+import com.example.gticslab5_20210751.Repository.TicketRepository;
 import jakarta.validation.Valid;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -19,10 +19,12 @@ import java.util.Optional;
 public class Controller {
 
     final TechnicianRepository technicianRepository;
-    final DeviceRepository deviceRepository;
-    public Controller(TechnicianRepository technicianRepository, DeviceRepository deviceRepository) {
+
+    final TicketRepository ticketRepository;
+    public Controller(TechnicianRepository technicianRepository, TicketRepository ticketRepository ) {
         this.technicianRepository = technicianRepository;
-        this.deviceRepository = deviceRepository;
+        this.ticketRepository = ticketRepository;
+
 
     }
 
@@ -81,5 +83,15 @@ public class Controller {
         }
 
     }
+
+    @GetMapping(value = { "/verEstadisticas"})
+    public String verEstadisticas(Model model) {
+
+        model.addAttribute("listaTicketsSitios",ticketRepository.listarTicketsPorSitio());
+
+        return "Estadisticas/Estadisticas-Sitio";
+
+    }
+
 
 }
