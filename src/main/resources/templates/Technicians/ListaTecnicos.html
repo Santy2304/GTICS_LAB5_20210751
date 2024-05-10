@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head th:replace="~{fragments/menu.html :: header( title = 'ListaTecnicos')}">
+    </head>
+    <body>
+        <div class="container px-4 pb-5">
+            <nav th:replace="~{fragments/menu.html :: menu}"></nav>
+            <h1 class="pb-2 border-bottom">Lista Transportistas</h1>
+            <a class="btn btn-primary mt-4 mb-4" th:href="@{'/crearTecnico'}">Nuevo Tecnico</a>
+
+            <div th:if="${msg != null}" th:text="${msg}" class="alert alert-success" role="alert"></div>
+
+            <!-- <form method="post" th:action="@{/shipper/BuscarTransportistas}">
+                 <input name="searchField" class="form-control mb-3" type="text" placeholder="Search"/>
+             </form>-->
+            <table class="table">
+                <tr>
+                    <th>#</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>DNI</th>
+                    <th>Telefono</th>
+                    <th>Edad</th>
+                    <th></th>
+                </tr>
+                <tr th:each="tecnico, info : ${listaTecnicos}">
+                    <td th:text="${info.index + 1}"></td>
+                    <td th:text="${tecnico.firstName}"></td>
+                    <td th:text="${tecnico.lastName}"></td>
+                    <td th:text="${tecnico.dni}"></td>
+                    <td th:text="${tecnico.phone}"></td>
+                    <td th:text="${tecnico.age}"></td>
+                    <td><a class="btn btn-primary"
+                           th:href="@{'/editarTecnico' + '?idTecnico=' + ${tecnico.id}}">Editar</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+    </body>
+</html>
